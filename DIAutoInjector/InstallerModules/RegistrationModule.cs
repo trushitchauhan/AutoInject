@@ -1,14 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DIAutoInjector.Attributes;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using AutoInject.Attributes;
 
-namespace AutoInject.InstallerModules
+namespace DIAutoInjector.InstallerModules
 {
     public static class RegistrationModule
     {
         public static ServiceLifetime DefaultServiceLifetime { get; private set; }
-        public static IServiceCollection RegisterAutoInject(this IServiceCollection services, ServiceLifetime defaultServiceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection RegisterDIAutoInjector(this IServiceCollection services, ServiceLifetime defaultServiceLifetime = ServiceLifetime.Transient)
         {
             DefaultServiceLifetime = defaultServiceLifetime;
 
@@ -17,22 +17,22 @@ namespace AutoInject.InstallerModules
             {
                 foreach (Type type in assembly.GetTypes())
                 {
-                    var attribute = type.GetCustomAttributes(typeof(InjectableAttribute), true);
-                    if (attribute.Any() && attribute.FirstOrDefault() is InjectableAttribute)
+                    var attributes = type.GetCustomAttributes(typeof(InjectableAttribute), true);
+                    if (attributes.Any() && attributes.FirstOrDefault() is InjectableAttribute)
                     {
-                        var intf = type.GetInterfaces().FirstOrDefault(i => !i.IsGenericType);
-                        if (intf != null)
+                        var implementationType = type.GetInterfaces().FirstOrDefault(i => !i.IsGenericType);
+                        if (implementationType != null)
                         {
-                            switch ((attribute.First() as InjectableAttribute).ServiceLifetime)
+                            switch ((attributes.First() as InjectableAttribute).ServiceLifetime)
                             {
                                 case ServiceLifetime.Singleton:
-                                    services.AddSingleton(intf, type);
+                                    services.AddSingleton(implementationType, type);
                                     break;
                                 case ServiceLifetime.Scoped:
-                                    services.AddScoped(intf, type);
+                                    services.AddScoped(implementationType, type);
                                     break;
                                 case ServiceLifetime.Transient:
-                                    services.AddTransient(intf, type);
+                                    services.AddTransient(implementationType, type);
                                     break;
                                 default:
                                     throw new InvalidOperationException();

@@ -1,6 +1,6 @@
-﻿using AutoInject.TestApi.Services;
+﻿using DIAutoInjector.TestApi.Services;
 
-namespace AutoInject.TestApi.Middlewares
+namespace DIAutoInjector.TestApi.Middlewares
 {
     public class IdentityLoggingMiddleware
     {

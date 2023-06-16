@@ -1,6 +1,6 @@
-﻿using AutoInject.Attributes;
+﻿using DIAutoInjector.Attributes;
 
-namespace AutoInject.TestApi.Services
+namespace DIAutoInjector.TestApi.Services
 {
     public interface IScopedHelper : IIdentity
     {

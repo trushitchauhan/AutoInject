@@ -1,7 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
-using AutoInject.InstallerModules;
-using AutoInject.TestApi.Middlewares;
-using AutoInject.TestApi.Services;
+using DIAutoInjector.InstallerModules;
+using DIAutoInjector.TestApi.Middlewares;
+using DIAutoInjector.TestApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.RegisterAutoInject();
+builder.Services.RegisterDIAutoInjector();
 builder.Services.AddScoped<IManualHelper, ManualHelper>((provider) => new ManualHelper("connetionString"));
 var app = builder.Build();
 

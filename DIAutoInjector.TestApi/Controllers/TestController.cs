@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using AutoInject.TestApi.Services;
+using DIAutoInjector.TestApi.Services;
 
-namespace AutoInject.TestApi.Controllers
+namespace DIAutoInjector.TestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

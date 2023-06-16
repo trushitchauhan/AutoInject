@@ -1,4 +1,4 @@
-﻿namespace AutoInject.TestApi.Services
+﻿namespace DIAutoInjector.TestApi.Services
 {
     public interface IIdentity
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using AutoInject.InstallerModules;
+using DIAutoInjector.InstallerModules;
 
-namespace AutoInject.Attributes
+namespace DIAutoInjector.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class InjectableAttribute : Attribute

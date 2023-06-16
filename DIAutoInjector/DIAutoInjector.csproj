@@ -2,6 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
+		<PackageId>DIAutoInjectoror</PackageId>
+		<Version>8.0.0-beta2</Version>
+		<Authors>Trushit Chauhan</Authors>
+		<Company>Trushit Chauhan</Company>
+	    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
