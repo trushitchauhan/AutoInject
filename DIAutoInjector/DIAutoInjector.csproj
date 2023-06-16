@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
-		<PackageId>DIAutoInjectoror</PackageId>
+		<PackageId>DIAutoInjector</PackageId>
 		<Version>8.0.0-beta2</Version>
 		<Authors>Trushit Chauhan</Authors>
 		<Company>Trushit Chauhan</Company>
