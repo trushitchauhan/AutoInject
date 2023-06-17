@@ -1,14 +1,14 @@
-# DIAutoInjector
-Auto dependency is package to make dependency injection attribute based, which register dependencies based on attributes, easy to manage and forget to mention dependencies in Startup.cs/Program.cs.
+# DIAutoInjector: Attribute-based Dependency Injection
+Auto dependency is a package to make dependency injection attribute-based, which registers dependencies based on attributes, is easy to manage, and forgets to mention dependencies in Startup.cs/Program.cs.
 
 ## How to get started:
-### Register DIAutoInjector installer module into Startup.cs/Program.cs file:
+### Register the DIAutoInjector installer module into Startup.cs/Program.cs file:
 ```
 builder.Services.RegisterDIAutoInjector(ServiceLifetime defaultServiceLifetime = ServiceLifetime.Transient);
 ```
-> defaultServiceLifetime is parameter where you can define default scope of the dependencies to be registered.
+> defaultServiceLifetime is a parameter where you can define the default scope of the dependencies to be registered.
 
-### Apply [Injectable] attribute to dependency class and that will automatically register your dependency into IoC container. This will auto register your dependency into IoC container with defaultServiceLifetime scope which you mention in RegisterModule.
+### Apply [Injectable] attribute to the dependency class and that will automatically register your dependency into the IoC container. This will auto-register your dependency into the IoC container with the defaultServiceLifetime scope which you mention in RegisterModule.
 ```
 public interface IHelper
 {
@@ -22,7 +22,7 @@ public class Helper : IHelper
 }
 ```
 
-### Apply [Injectable(ServiceLifetime.Scoped)] attribute to dependency class and that will automatically register your dependency into IoC container with Scoped scope. Options available are :
+### Apply [Injectable(ServiceLifetime.Scoped)] attribute to the dependency class and that will automatically register your dependency into the IoC container with Scoped scope. Options available are :
  - [Injectable(ServiceLifetime.Transient)]
  - [Injectable(ServiceLifetime.Scoped)]
  - [Injectable(ServiceLifetime.Singleton)]
@@ -40,7 +40,7 @@ public class ScopedHelper : IScopedHelper
 }
 ```
 
-### If you don't want to register your depdency automatically then don't mention Injectable attribute and register it manually into Startup.cs/Program.cs.
+### If you don't want to register your dependency automatically then don't mention Injectable attribute and register it manually into Startup.cs/Program.cs.
 ```
 builder.Services.AddScoped<IManualHelper, ManualHelper>((provider) => new ManualHelper("connetionString"));
 ```
